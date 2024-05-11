@@ -12,13 +12,14 @@ function jwtMiddleware(req, res, next) {
 
     try {
         // Verifica y decodifica el token JWT
-        const decoded = jwt.verify(token, 'tu_secreto'); // Reemplaza 'tu_secreto' con tu clave secreta
+        const decoded = jwt.verify(token, 'clavesecreta'); 
         
         // Agrega la información del usuario decodificado al objeto de solicitud
         req.user = decoded;
 
         // Llama al siguiente middleware
         next();
+        
     } catch (error) {
         console.error(error);
         res.status(401).json({ error: 'Token de autorización inválido' });

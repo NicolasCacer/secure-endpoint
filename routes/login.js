@@ -18,21 +18,14 @@ router.post("/", (req,res) =>{
 
       if (email === "admin@admin.com" && password === "admin") {
         // Generar un token JWT con una clave secreta
-        const token = jwt.sign({ email }, 'tu_secreto', { expiresIn: '1h' }); // Cambia 'tu_secreto' por tu clave secreta
+        const token = jwt.sign({ email }, 'clavesecreta', { expiresIn: '1h' }); // Cambia 'tu_secreto' por tu clave secreta
 
         // Retornar el token en la respuesta
         return res.status(200).json({ message: 'Inicio de sesión exitoso', token });
       }
-      // Crear objeto de usuario con los datos proporcionados
-      const usuarioNuevo = {
-        email,
-        password
-      };
-
-      users.push(usuarioNuevo)
-    
-      // Retornar el objeto JSON con la información del usuario creado
-      res.status(201).json(usuarioNuevo);
+      else{
+        return res.status(401).json({ message: 'Credenciales incorrectas' });
+      }
 
       } catch (error) {
         console.error(error)
