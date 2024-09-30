@@ -1,8 +1,6 @@
-const express=require ("express");
+const express = require ("express");
 const jwt = require('jsonwebtoken');
-
 const router = express.Router();
-
 router.use(express.urlencoded({ extended: true })); // para acceder al body
 router.use(express.json());
 

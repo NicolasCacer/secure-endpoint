@@ -1,9 +1,6 @@
 const express=require ("express");
-
 const router = express.Router();
-
 const jwtMiddleware= require('../components/jwtMiddleWare');
-
 router.use(jwtMiddleware);
 
 router.get("/", async (req,res) => {
@@ -19,10 +16,7 @@ router.get("/", async (req,res) => {
             email,
             birthday
           };
-
-        res.send(usuarioNuevo);
-
-        
+        res.send(usuarioNuevo);  
     } catch (error) {
         console.error(error);
         res.status(500).send('Error interno del servidor');
